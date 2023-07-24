@@ -1,17 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from "styled-components"
 
-// https://stickode.tistory.com/691
-// 일정시간마다 사진 촬영해서 4장되면 다음 페이지로 넘어가는 기능 구현하기
-
 const CONSTRAINTS = { video: true };
-const WIDTH = 600
-const HEIGHT = 600
+const WIDTH = 146
+const HEIGHT = 220
 
-export default function SnapPage() {
+export default function SnapPage({ picture, setPicture }) {
 let pictureId = useRef(1)
 const videoRef = useRef(null);
-const [picture, setPicture] = useState([])
+const navigate = useNavigate()
+
 // 비디오 재생
 const startVideo = async() => {
     const stream = await navigator.mediaDevices.getUserMedia({video: CONSTRAINTS})
@@ -52,12 +51,20 @@ const autoShot = () => {
   // }
 }
 
-
 useEffect(() => {
     startVideo()
     autoShot()
-    console.log(picture.length)
 },[])
+
+// 사진 4장 촬영 후 다음 페이지로 이동, 일단 1초 delay 넣어둠
+// 이동하기전에 다음 페이지로 이동합니다 문구 넣어주면 좋을듯
+useEffect(() => {
+  if(picture.length >= 4) {
+    setTimeout(() => {
+      navigate("/print")
+    }, 1000)
+  }
+}, [picture])
 
 
   return (
@@ -66,21 +73,17 @@ useEffect(() => {
         <video autoPlay ref={videoRef}></video>
         <button onClick={snapShot}>촬영</button>
     </div>
-    <div>
+    {/* <div>
       {picture.map((pic, idx) =>  (
         <Picture src={pic} key={idx} alt={`${idx+1}번 사진`} />
       ))}
-    </div>
-    <Canvas id="canvas" style={{display: 'none'}}></Canvas>
+    </div> */}
+    <canvas id="canvas" style={{display: 'none'}}></canvas>
     </>
   )
 }
 
-const Picture = styled.img`
-  width: 100px;
-  height: 100px;
-`
-
-const Canvas = styled.canvas`
-  background-color: pink;
-`
+// const Picture = styled.img`
+//   width: 100px;
+//   height: 100px;
+// `
