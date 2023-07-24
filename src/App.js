@@ -1,10 +1,15 @@
-import Camera from "./Camera";
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import { StartPage, SnapPage } from "./components/index"
 
 function App() {
   return (
     <div className="App">
-      <h1>안녕</h1>
-      <Camera/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<StartPage/>}/>
+          <Route path="/snap" element={<SnapPage/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
