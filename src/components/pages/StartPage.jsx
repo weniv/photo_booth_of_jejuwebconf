@@ -1,54 +1,46 @@
-import { styled } from "styled-components";
-import BackgroundImg from "../../assets/background.svg";
-import Logo from "../../assets/logo.svg";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import styled from "styled-components"
+import BgImg from "../../assets/background.svg"
 
-export default function Welcome() {
-    const navigate = useNavigate();
-    const navigateToFrame = () => navigate("/frame");
-    return (
-        <Background onClick={navigateToFrame}>
-            <MainBox>
-                <h1>
-                    <img src={Logo} alt="웹생네컷" />
-                </h1>
-            </MainBox>
-            <Start>
-                <strong>화면을 터치해주세요</strong>
-            </Start>
-        </Background>
-    );
+export default function StartPage() {
+  const navigate = useNavigate()
+
+  return (
+    <Cont onClick={() => navigate("/frame")}>
+        <Btn>
+          <p>화면을 터치해주세요</p>
+        </Btn>
+    </Cont>
+  )
 }
 
-const Background = styled.main`
-    background: url(${BackgroundImg}) 0 0 no-repeat;
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-`;
+const Cont = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background: url(${BgImg}) 0 0 no-repeat;
+  background-size: cover;
+`
 
-const MainBox = styled.div`
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
+const Btn = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 15vh;
+  background-color: var(--main-color);
+  bottom: 0;
 
-const Start = styled.div`
-    background-color: #f6b25a;
-    height: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  p {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--white-color);
+  }
+`
 
-    &:hover {
-        background-color: #f3ce7d;
-    }
 
-    strong {
-        color: #fff;
-        font-family: Pretendard;
-        font-size: 64px;
-        font-weight: 800;
-    }
-`;
