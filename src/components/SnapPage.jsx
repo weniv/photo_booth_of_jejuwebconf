@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from "styled-components"
 
@@ -7,9 +7,10 @@ const WIDTH = 146
 const HEIGHT = 220
 
 export default function SnapPage({ picture, setPicture }) {
-let pictureId = useRef(1)
-const videoRef = useRef(null);
-const navigate = useNavigate()
+  const [time, setTime] = useState(40); 
+  let pictureId = useRef(1)
+  const videoRef = useRef(null);
+  const navigate = useNavigate()
 
 // 비디오 재생
 const startVideo = async() => {
@@ -21,13 +22,13 @@ const startVideo = async() => {
 
 // 사진 촬영
 const snapShot = () => {
+  console.log("촬영!")
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext('2d')
-  console.log("촬영!")
   canvas.width = WIDTH
   canvas.height = HEIGHT
-  // ctx.scale(-1,1)
-  // ctx.translate(-WIDTH, 0)
+  ctx.scale(-1,1)
+  ctx.translate(-WIDTH, 0)
   ctx.drawImage(videoRef.current, 0, 0, WIDTH, HEIGHT)
   canvas.toBlob((blob) => {
     new File([blob], `picture-${pictureId.current}.jpg`, {type: "image/jpeg"})
@@ -37,23 +38,8 @@ const snapShot = () => {
   setPicture([...picture, imageLink])
 }
 
-const autoShot = () => {
-  let take;
-  // if(picture.length <= 4) {
-  //   console.log("사진촬영")
-  //   take = setInterval(() => {
-  //     snapShot()
-  //   }, 1000)
-  // } else {
-  //   console.log("촬영종료")
-  //   clearInterval(take)
-  //   return "end"
-  // }
-}
-
 useEffect(() => {
     startVideo()
-    autoShot()
 },[])
 
 // 사진 4장 촬영 후 다음 페이지로 이동, 일단 1초 delay 넣어둠
@@ -66,24 +52,41 @@ useEffect(() => {
   }
 }, [picture])
 
+const timer = () => {
+  const sec = setTimeout(() => {
+    setTime((time - 1))
+  }, 1000)
+  if(time === 0) {
+    navigate("/print")
+    clearInterval(sec)
+  } else if(time % 10 === 9) {
+    snapShot()
+  }
+}
+
+useEffect(() => {
+  timer()
+},[time])
+
 
   return (
     <>
-    <div>
-        <video autoPlay ref={videoRef}></video>
-        <button onClick={snapShot}>촬영</button>
-    </div>
-    {/* <div>
-      {picture.map((pic, idx) =>  (
-        <Picture src={pic} key={idx} alt={`${idx+1}번 사진`} />
-      ))}
-    </div> */}
-    <canvas id="canvas" style={{display: 'none'}}></canvas>
+      <Wrap>
+          <Video autoPlay ref={videoRef} />
+          <button onClick={snapShot}>촬영</button>
+          <h1>{time}</h1>
+      </Wrap>
+      <canvas id="canvas" style={{display: 'none'}}></canvas>
     </>
   )
 }
 
-// const Picture = styled.img`
-//   width: 100px;
-//   height: 100px;
-// `
+const Wrap = styled.div`
+  background-color: pink;
+`
+
+const Video = styled.video`
+  transform: rotateY(180deg);
+  -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+  -moz-transform:rotateY(180deg);
+`
