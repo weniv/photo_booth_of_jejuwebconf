@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom"
-import PrintPage from "./components/PrintPage";
-import { StartPage, SnapPage, FramePage  } from "./components/index"
+import GlobalStyles from "./styles/GlobalStyle";
+import { StartPage, SnapPage, FramePage, PrintPage  } from "./components/index"
 import { useState } from "react";
 
 
@@ -9,6 +9,7 @@ function App() {
 
   return (
     <div className="App">
+      <GlobalStyles/>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<StartPage/>}/>
