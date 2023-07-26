@@ -1,23 +1,23 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom"
-import PrintPage from "./components/PrintPage";
-import { StartPage, SnapPage,  } from "./components/index"
+import GlobalStyles from "./styles/GlobalStyle";
+import { StartPage, SnapPage, FramePage, PrintPage  } from "./components/pages"
 import { useState } from "react";
 
 
 function App() {
-  const [picture, setPicture] = useState([])
+  const [result, setResult] = useState([])
 
   return (
     <div className="App">
-      <picContext value={{picture, setPicture}}>
+      <GlobalStyles/>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<StartPage/>}/>
-            <Route path="/snap" element={<SnapPage picture={picture} setPicture={setPicture}/>}/>
-            <Route path="/print" element={<PrintPage picture={picture} />}/>
+            <Route path="/frame" element={<FramePage/>}/>
+            <Route path="/snap" element={<SnapPage setResult={setResult}/>}/>
+            <Route path="/print" element={<PrintPage result={result} />}/>
           </Routes>
         </BrowserRouter>
-      </picContext>
     </div>
   );
 }
