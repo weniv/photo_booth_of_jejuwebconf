@@ -6,13 +6,12 @@ const GlobalStyles = createGlobalStyle`
 
     :root {
         --main-color: #f6b25a;
+        --bg-color: #f3ce7d;
         --white-color: #fff;
     }
 
     * {
         box-sizing: border-box;
-        overflow: hidden;
-
     }
 `
 

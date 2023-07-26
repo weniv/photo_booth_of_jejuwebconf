@@ -1,11 +1,11 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import GlobalStyles from "./styles/GlobalStyle";
-import { StartPage, SnapPage, FramePage, PrintPage  } from "./components/index"
+import { StartPage, SnapPage, FramePage, PrintPage  } from "./components/pages"
 import { useState } from "react";
 
 
 function App() {
-  const [picture, setPicture] = useState([])
+  const [result, setResult] = useState([])
 
   return (
     <div className="App">
@@ -14,8 +14,8 @@ function App() {
           <Routes>
             <Route path="/" element={<StartPage/>}/>
             <Route path="/frame" element={<FramePage/>}/>
-            <Route path="/snap" element={<SnapPage picture={picture} setPicture={setPicture}/>}/>
-            <Route path="/print" element={<PrintPage picture={picture} />}/>
+            <Route path="/snap" element={<SnapPage setResult={setResult}/>}/>
+            <Route path="/print" element={<PrintPage result={result} />}/>
           </Routes>
         </BrowserRouter>
     </div>
