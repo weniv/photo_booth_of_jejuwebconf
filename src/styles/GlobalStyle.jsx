@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from "styled-components"
+import reset from "styled-reset"
 
 const GlobalStyles = createGlobalStyle`
     ${reset}
@@ -13,8 +13,8 @@ const GlobalStyles = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
-
-    input[type="radio"] {
+    
+  input[type="radio"] {
         --active: #f6b25a;
         --active-inner: #fff;
         --focus: 2px rgba(237, 122, 58, 0.3);
