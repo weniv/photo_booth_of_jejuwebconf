@@ -15,7 +15,7 @@ export default function PrintPage({ result }) {
     const [imgUrl, setImgUrl] = useState("");
     const [isQr, setIsQr] = useState(false);
     const canvasRef = useRef(null);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const frameType = localStorage.getItem("frameType");
 
@@ -33,7 +33,7 @@ export default function PrintPage({ result }) {
         const canvas = canvasRef.current;
         const ctx = canvasRef.current.getContext("2d");
         const image = new Image();
-        image.src = `/images/${frameType}.png`;
+        image.src = `${process.env.PUBLIC_URL}/images/${frameType}.png`;
         const pic = new Image();
         pic.src = result;
         canvas.width = WIDTH;
@@ -94,7 +94,7 @@ export default function PrintPage({ result }) {
                 ) : (
                     <img src={Spinner} alt="로딩중" />
                 )}
-                <button onClick={navigate(process.env.PUBLIC_URL + "/")}>처음으로 돌아가기</button>
+                {/* <button onClick={navigate(process.env.PUBLIC_URL + "/")}>처음으로 돌아가기</button> */}
             </div>
         </Cont>
     );
