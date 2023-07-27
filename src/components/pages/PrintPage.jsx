@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import html2canvas from "html2canvas";
 import styled from "styled-components";
 import QRCode from "react-qr-code";
 import Spinner from "../../assets/Spinner.gif";
+import html2canvas from "html2canvas";
 
 const WIDTH = 1653 / 4.5;
 const HEIGHT = 2915 / 4.5;
@@ -14,12 +15,14 @@ export default function PrintPage({ result }) {
     const [imgUrl, setImgUrl] = useState("");
     const [isQr, setIsQr] = useState(false);
     const canvasRef = useRef(null);
+    const navigate = useNavigate();
+
     const frameType = localStorage.getItem("frameType");
 
     useEffect(() => {
         setIsQr(false);
         drawImg();
-        imageCaptureHandler();
+        imageCapture();
         setTimeout(() => {
             setIsQr(true);
         }, 500);
@@ -53,6 +56,7 @@ export default function PrintPage({ result }) {
             const response = await axios.post("https://api.mandarin.weniv.co.kr/image/uploadfile", formData);
             const imageUrl = "https://api.mandarin.weniv.co.kr/" + response.data.filename;
             setImgUrl(imageUrl);
+            console.log(imageUrl);
 
             return imageUrl;
         } catch (error) {
@@ -61,7 +65,7 @@ export default function PrintPage({ result }) {
     };
 
     // 화면 캡쳐
-    const imageCaptureHandler = async () => {
+    const imageCapture = async () => {
         if (!canvasRef.current) return;
 
         try {
@@ -78,14 +82,6 @@ export default function PrintPage({ result }) {
         }
     };
 
-    // qr 생성 버튼
-    const downloadImg = () => {
-        imageCaptureHandler();
-        setTimeout(() => {
-            // setIsQr(true);
-        }, 500);
-    };
-
     return (
         <Cont>
             <canvas ref={canvasRef}></canvas>
@@ -98,6 +94,7 @@ export default function PrintPage({ result }) {
                 ) : (
                     <img src={Spinner} alt="로딩중" />
                 )}
+                <button onClick={navigate(process.env.PUBLIC_URL + "/")}>처음으로 돌아가기</button>
             </div>
         </Cont>
     );
