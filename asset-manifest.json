@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/photo_booth_of_jejuwebconf/static/js/main.bb224d38.js",
+    "main.js": "/photo_booth_of_jejuwebconf/static/js/main.b457d2aa.js",
     "static/media/weniv_type2.svg": "/photo_booth_of_jejuwebconf/static/media/weniv_type2.11d3171e8d4258c32a883d0b769a45a5.svg",
     "static/media/weniv_type1.svg": "/photo_booth_of_jejuwebconf/static/media/weniv_type1.f801dd7c0ccbbc4c252a34e6fbd0d2f0.svg",
     "static/media/webconf_type1.svg": "/photo_booth_of_jejuwebconf/static/media/webconf_type1.2417ddcb717872556fbd6ada3f4acdd7.svg",
@@ -8,9 +8,9 @@
     "static/media/background.svg": "/photo_booth_of_jejuwebconf/static/media/background.e59366ab2560cfd659d307c1234222a3.svg",
     "static/media/Spinner.gif": "/photo_booth_of_jejuwebconf/static/media/Spinner.e5f2e824285b8e87629a.gif",
     "index.html": "/photo_booth_of_jejuwebconf/index.html",
-    "main.bb224d38.js.map": "/photo_booth_of_jejuwebconf/static/js/main.bb224d38.js.map"
+    "main.b457d2aa.js.map": "/photo_booth_of_jejuwebconf/static/js/main.b457d2aa.js.map"
   },
   "entrypoints": [
-    "static/js/main.bb224d38.js"
+    "static/js/main.b457d2aa.js"
   ]
 }
