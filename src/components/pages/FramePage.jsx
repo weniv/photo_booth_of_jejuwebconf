@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import styled from "styled-components"
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import WenivType1 from "../../assets/weniv_type1.svg";
 import WenivType2 from "../../assets/weniv_type2.svg";
 import WebconfType1 from "../../assets/webconf_type1.svg";
@@ -18,29 +18,31 @@ function FrameButton({ frame, id, saveFrame }) {
 }
 
 export default function FramePage() {
-  const navigate = useNavigate()
-  const [frameType, setFrameType] = useState("WenivType1")
+    const navigate = useNavigate();
+    const [frameType, setFrameType] = useState("WenivType1");
 
-  const saveFrame = (e) => {
-    setFrameType(e.target.id)
-  }
+    const saveFrame = (e) => {
+        setFrameType(e.target.id);
+    };
 
-  useEffect(() => {
-    localStorage.setItem("frameType", frameType)
-  },[frameType])
+    useEffect(() => {
+        localStorage.setItem("frameType", frameType);
+    }, [frameType]);
 
-  return (
-      <Layout>
-          <h1>1. 프레임을 선택해주세요.</h1>
-          <section>
-              <FrameButton frame={WenivType1} id="WenivType1" saveFrame={saveFrame}/>
-              <FrameButton frame={WenivType2} id="WenivType2" saveFrame={saveFrame}/>
-              <FrameButton frame={WebconfType1} id="WebconfType1" saveFrame={saveFrame}/>
-              <FrameButton frame={WebconfType2} id="WebconfType2" saveFrame={saveFrame}/>
-          </section>
-          <button type='button' onClick={() => navigate("/snap")}>선택완료</button>
-      </Layout>
-  )
+    return (
+        <Layout>
+            <h1>1. 프레임을 선택해주세요.</h1>
+            <section>
+                <FrameButton frame={WenivType1} id="WenivType1" saveFrame={saveFrame} />
+                <FrameButton frame={WenivType2} id="WenivType2" saveFrame={saveFrame} />
+                <FrameButton frame={WebconfType1} id="WebconfType1" saveFrame={saveFrame} />
+                <FrameButton frame={WebconfType2} id="WebconfType2" saveFrame={saveFrame} />
+            </section>
+            <button type="button" onClick={() => navigate(process.env.PUBLIC_URL + "/snap")}>
+                선택완료
+            </button>
+        </Layout>
+    );
 }
 
 const Layout = styled.main`
