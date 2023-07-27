@@ -42,5 +42,3 @@ const Btn = styled.div`
     color: var(--white-color);
   }
 `
-
-
