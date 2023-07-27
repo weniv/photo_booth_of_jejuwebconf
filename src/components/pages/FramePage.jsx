@@ -6,6 +6,7 @@ import WenivType2 from "../../assets/weniv_type2.svg";
 import WebconfType1 from "../../assets/webconf_type1.svg";
 import WebconfType2 from "../../assets/webconf_type2.svg";
 
+
 function FrameButton({ frame, id, saveFrame }) {
     return (
         <div className="frameBtn" onClick={(e) => saveFrame(e)}>
