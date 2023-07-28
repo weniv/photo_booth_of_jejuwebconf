@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toJpeg } from "html-to-image";
+import html2canvas from "html2canvas";
 import styled from "styled-components";
 import {IMG_W,IMG_H, IMG_WRAP_W, IMG_WRAP_H} from "../../data/size"
 
@@ -47,14 +47,12 @@ export default function SnapPage({ setResult }) {
         if (!picWrapRef) return;
         const picWrap = picWrapRef.current;
 
-        // https://sub0709.tistory.com/48
-        // 다른 라이브러리로 변경해보기
-        // DOM to jpeg
         try {
-            const dataUrl = await toJpeg(picWrap, { quality: 0.95 });
-            setResult(dataUrl);
+            const canvas = await html2canvas(picWrap, { scale: 2 });
+            const result = canvas.toDataURL("image/jpeg")
+            setResult(result)
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
     };
 

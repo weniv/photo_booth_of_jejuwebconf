@@ -3,7 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import QRCode from "react-qr-code";
 import Spinner from "../../assets/Spinner.gif";
-import { toBlob } from "html-to-image";
+// import { toBlob } from "html-to-image";
 import html2canvas from "html2canvas";
 import {FRAME_W, FRAME_H, IMG_WRAP_W, IMG_WRAP_H, TOP_MARGIN, TOP_MARGIN_2} from "../../data/size"
 
