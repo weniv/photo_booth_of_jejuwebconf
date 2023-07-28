@@ -9,6 +9,7 @@ import { FRAME_W, FRAME_H, IMG_WRAP_W, IMG_WRAP_H, TOP_MARGIN, TOP_MARGIN_2 } fr
 export default function PrintPage({ result }) {
     const [imgUrl, setImgUrl] = useState("");
     const [isQr, setIsQr] = useState(false);
+    const [qrValue, setQrValue] = useState("");
     const frameType = localStorage.getItem("frameType");
 
     const contentRef = useRef();
@@ -20,6 +21,12 @@ export default function PrintPage({ result }) {
             setIsQr(true);
         }, 500);
     }, []);
+
+    useEffect(() => {
+        const specificUrl = imgUrl.split("https://")[1];
+        setQrValue("https://weniv.github.io/photo_booth_of_jejuwebconf/download/:" + specificUrl);
+        console.log(qrValue);
+    }, [imgUrl]);
 
     // 이미지 url 생성
     const createUrl = async (imgData) => {
@@ -65,7 +72,7 @@ export default function PrintPage({ result }) {
                 <p>카메라로 qr코드를 스캔 후 사진을 저장해주세요!</p>
                 {isQr ? (
                     <>
-                        <QRCode value={imgUrl} />
+                        <QRCode value={qrValue} />
                     </>
                 ) : (
                     <img src={Spinner} alt="로딩중" />
