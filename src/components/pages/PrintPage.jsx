@@ -25,7 +25,6 @@ export default function PrintPage({ result }) {
     useEffect(() => {
         const specificUrl = imgUrl.split("https://")[1];
         setQrValue("https://weniv.github.io/photo_booth_of_jejuwebconf/download/:" + specificUrl);
-        console.log(qrValue);
     }, [imgUrl]);
 
     // 이미지 url 생성
