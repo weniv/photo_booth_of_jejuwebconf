@@ -3,11 +3,11 @@ import axios from "axios";
 import styled from "styled-components";
 import QRCode from "react-qr-code";
 import Spinner from "../../assets/Spinner.gif";
-// import { toBlob } from "html-to-image";
 import html2canvas from "html2canvas";
 import {FRAME_W, FRAME_H, IMG_WRAP_W, IMG_WRAP_H, TOP_MARGIN, TOP_MARGIN_2} from "../../data/size"
 
 export default function PrintPage({ result }) {
+    let idRef = useRef(1)
     const [imgUrl, setImgUrl] = useState("");
     const [isQr, setIsQr] = useState(false);
     const frameType = localStorage.getItem("frameType");
@@ -15,6 +15,7 @@ export default function PrintPage({ result }) {
     const contentRef = useRef();
 
     useEffect(() => {
+        idRef.current++
         setIsQr(false);
         imageCaptureHandler();
         setTimeout(() => {
@@ -24,41 +25,40 @@ export default function PrintPage({ result }) {
 
     // 이미지 url 생성
     const createUrl = async (imgData) => {
-        const formData = new FormData();
-        formData.append("image", imgData);
+        const postData = {
+            "fileName": imgData.name,
+            "files": imgData
+        }
 
         try {
-            const response = await axios.post("https://api.mandarin.weniv.co.kr/image/uploadfile", formData);
-            const imageUrl = "https://api.mandarin.weniv.co.kr/" + response.data.filename;
-            setImgUrl(imageUrl);
-            return imageUrl;
+            const res = await axios({
+              method: "POST",
+              url: `http://127.0.0.1:8000/photo/`,
+              mode: "cors",
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+              data: postData, 
+            })
+            setImgUrl(res.data.files)
+            return res
         } catch (error) {
             console.error(error);
         }
     };
+
     
     // 화면 캡쳐
     const imageCaptureHandler = async () => {
         if (!contentRef.current) return;
         const result = contentRef.current
-
-        // DOM to blob => 라이브러리 하나만 쓰고 싶은데 살짝 잘려서 나옴, 화질별로
-        // try {
-        //     const dataUrl = await toBlob(result);
-        //     // console.log("dataUrl", dataUrl) // {size: 588072, type: 'image/png'}
-        //     const myFile = new File([dataUrl], "image.jpeg", {
-        //             type: dataUrl.type,
-        //         });
-        //     createUrl(myFile);
-        // } catch (err) {
-        //     console.log(err);
-        // }
+        const date = new Date()
+        const createdDate = `${date.getFullYear()}${date.getMonth()+1}${date.getDate()}`
 
         try {
             const canvas = await html2canvas(result, { scale: 2 });
             canvas.toBlob((myBlob) => {
-                // console.log("myBlob",myBlob) // Blob {size: 191307, type: 'image/jpeg'}
-                const myFile = new File([myBlob], "image.jpeg", {
+                const myFile = new File([myBlob], `${createdDate}-${idRef.current}.jpeg`, {
                     type: myBlob.type,
                 });
                 createUrl(myFile);
@@ -113,3 +113,11 @@ const Picture = styled.img`
     width: ${(width) => width};
     height: ${(height) => height};
 `;
+
+const Test = styled.img`
+    position: absolute;
+    width: ${(width) => width};
+    height: ${(height) => height};
+    background-color: red;
+`;
+
