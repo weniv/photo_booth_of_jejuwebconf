@@ -10,11 +10,11 @@ function App() {
         <div className="App">
             <GlobalStyles />
             <Routes>
-                <Route path={process.env.PUBLIC_URL + "/"} element={<StartPage />} />
-                <Route path={process.env.PUBLIC_URL + "/frame"} element={<FramePage />} />
-                <Route path={process.env.PUBLIC_URL + "/snap"} element={<SnapPage setResult={setResult} />} />
-                <Route path={process.env.PUBLIC_URL + "/print"} element={<PrintPage result={result} />} />
-                <Route path={process.env.PUBLIC_URL + "/download/:imgUrl/*"} element={<DownloadPage />} />
+                <Route path="/" element={<StartPage />} />
+                <Route path="/frame" element={<FramePage />} />
+                <Route path="/snap" element={<SnapPage setResult={setResult} />} />
+                <Route path="/print" element={<PrintPage result={result} />} />
+                <Route path="/download/:imgUrl/*" element={<DownloadPage />} />
             </Routes>
         </div>
     );

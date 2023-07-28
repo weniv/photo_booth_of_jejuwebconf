@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import QRCode from "react-qr-code";
@@ -14,6 +15,9 @@ export default function PrintPage({ result }) {
 
     const contentRef = useRef();
 
+    const location = useLocation();
+    const defaultUrl = "https://" + location.pathname.split("/print")[0];
+
     useEffect(() => {
         setIsQr(false);
         imageCaptureHandler();
@@ -24,7 +28,7 @@ export default function PrintPage({ result }) {
 
     useEffect(() => {
         const specificUrl = imgUrl.split("https://")[1];
-        setQrValue("https://weniv.github.io/photo_booth_of_jejuwebconf/download/:" + specificUrl);
+        setQrValue(defaultUrl + "/download/:" + specificUrl);
     }, [imgUrl]);
 
     // 이미지 url 생성

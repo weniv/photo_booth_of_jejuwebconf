@@ -1,6 +1,5 @@
 {
     "name": "photosism",
-    "homepage": "https://weniv.github.io/photo_booth_of_jejuwebconf/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
