@@ -16,7 +16,7 @@ export default function PrintPage({ result }) {
     const contentRef = useRef();
 
     const location = useLocation();
-    const defaultUrl = "https://" + location.pathname.split("/print")[0];
+    // const defaultUrl = location.pathname.split("/print")[0];
 
     useEffect(() => {
         setIsQr(false);
@@ -28,7 +28,8 @@ export default function PrintPage({ result }) {
 
     useEffect(() => {
         const specificUrl = imgUrl.split("https://")[1];
-        setQrValue(defaultUrl + "/download/:" + specificUrl);
+        setQrValue("https://whimsical-cheesecake-584645.netlify.app/download/:" + specificUrl);
+        // console.log("qrValue", qrValue);
     }, [imgUrl]);
 
     // 이미지 url 생성
