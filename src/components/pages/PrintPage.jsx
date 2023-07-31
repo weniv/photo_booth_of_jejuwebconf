@@ -47,7 +47,7 @@ export default function PrintPage({ result }) {
         }
     };
 
-    console.log("imgUrl", imgUrl)
+    // console.log("imgUrl", imgUrl)
 
     
     // 화면 캡쳐
@@ -74,7 +74,7 @@ export default function PrintPage({ result }) {
         <>
             <Wrap ref={contentRef} width={FRAME_W} height={FRAME_H} top={frameType === "WenivType2" ? TOP_MARGIN_2 : TOP_MARGIN}>
                 <Picture src={result} width={IMG_WRAP_W} height={IMG_WRAP_H}/>
-                <Frame src={process.env.PUBLIC_URL + `/images/${frameType}.png`} alt="" width={FRAME_W} height={FRAME_H}/>
+                <Frame src={process.env.PUBLIC_URL + `/images/${frameType}.svg`} alt="" width={FRAME_W} height={FRAME_H}/>
             </Wrap>
 
             <div>
