@@ -1,27 +1,38 @@
 import { createGlobalStyle } from "styled-components"
 import reset from "styled-reset"
 
+
 const GlobalStyles = createGlobalStyle`
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
     ${reset}
 
     :root {
-        --main-color: #f6b25a;
-        --bg-color: #f3ce7d;
-        --white-color: #fff;
+        --main-color: #ED7A3A;
+        --bg-color: #F3EBE0;
+        --white-color: #FFFFFF;
     }
 
     * {
         box-sizing: border-box;
     }
-    
-  input[type="radio"] {
-        --active: #f6b25a;
+
+    html {
+        font-family: 'GongGothicMedium';
+    }
+
+  /* input[type="radio"] {
+        --active: #ED7A3A;
         --active-inner: #fff;
         --focus: 2px rgba(237, 122, 58, 0.3);
         -webkit-appearance: none;
         -moz-appearance: none;
-        height: 40px;
-        width: 40px;
+        height: 126px;
+        width: 126px;
         border-radius: 20px;
         cursor: pointer;
         border: 1px solid var(--bc, var(--border));
@@ -48,14 +59,14 @@ const GlobalStyles = createGlobalStyle`
             box-shadow: 0 0 0 var(--focus);
         }
         &:not(.switch) {
-            width: 40px;
+            width: 126px;
             &:checked {
                 --o: 1;
             }
         }
-    }
+    } */
     
-    input[type="radio"] {
+    /* input[type="radio"] {
         &:not(.switch) {
             border-radius: 20px;
             &:after {
@@ -80,7 +91,7 @@ const GlobalStyles = createGlobalStyle`
         &:checked {
             opacity: 1;
         }
-    }
+    } */
 `;
 
 export default GlobalStyles;

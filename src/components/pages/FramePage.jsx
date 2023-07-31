@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import WenivType1 from "../../assets/weniv_type1.svg";
-import WenivType2 from "../../assets/weniv_type2.svg";
-import WebconfType1 from "../../assets/webconf_type1.svg";
-import WebconfType2 from "../../assets/webconf_type2.svg";
-
+import WenivType1 from "../../assets/frame_1.svg";
+import WenivType2 from "../../assets/frame_2.svg";
+import WebconfType1 from "../../assets/frame_3.svg";
+import WebconfType2 from "../../assets/frame_4.svg";
+import WebconfType3 from "../../assets/frame_5.svg";
+import checkIcon from "../../assets/check.svg"
 
 function FrameButton({ frame, id, saveFrame }) {
     return (
-        <div className="frameBtn" onClick={(e) => saveFrame(e)}>
+        <Frame className="frameBtn" onClick={(e) => saveFrame(e)}>
             <label htmlFor={id}>
                 <img src={frame} />
+                <input type="radio" id={id} name="frame" />
             </label>
-            <input type="radio" id={id} name="frame" />
-        </div>
+        </Frame>
     );
 }
 
 export default function FramePage() {
     const navigate = useNavigate();
-    const [frameType, setFrameType] = useState("WenivType1");
+    const [frameType, setFrameType] = useState("");
 
     const saveFrame = (e) => {
+        console.log(e.target.id)
         setFrameType(e.target.id);
     };
 
@@ -30,69 +32,99 @@ export default function FramePage() {
         localStorage.setItem("frameType", frameType);
     }, [frameType]);
 
+    const moveNextPage = () => {
+        if(frameType) {
+            navigate("/snap")
+        }
+    }
+
     return (
-        <Layout>
-            <h1>1. 프레임을 선택해주세요.</h1>
-            <section>
-                <FrameButton frame={WenivType1} id="WenivType1" saveFrame={saveFrame} />
-                <FrameButton frame={WenivType2} id="WenivType2" saveFrame={saveFrame} />
-                <FrameButton frame={WebconfType1} id="WebconfType1" saveFrame={saveFrame} />
-                <FrameButton frame={WebconfType2} id="WebconfType2" saveFrame={saveFrame} />
-            </section>
-            <button type="button" onClick={() => navigate(process.env.PUBLIC_URL + "/snap")}>
-                선택완료
-            </button>
-        </Layout>
+        <Wrap>
+            <Cont>
+                <FrameWrap>
+                    <FrameButton frame={WenivType1} id="WenivType1" saveFrame={saveFrame}></FrameButton>
+                    <FrameButton frame={WenivType2} id="WenivType2" saveFrame={saveFrame}></FrameButton>
+                    <FrameButton frame={WebconfType1} id="WebconfType1" saveFrame={saveFrame}></FrameButton>
+                    <FrameButton frame={WebconfType2} id="WebconfType2" saveFrame={saveFrame}></FrameButton>
+                    <FrameButton frame={WebconfType3} id="WebconfType3" saveFrame={saveFrame}></FrameButton>
+                </FrameWrap>
+            </Cont>
+            <Btn onClick={moveNextPage}>{!frameType ? "프레임을 선택해주세요" : "프레임 선택 완료"}</Btn>
+        </Wrap>
     );
 }
 
-const Layout = styled.main`
+const Wrap = styled.div`
     width: 100vw;
     height: 100vh;
-    padding: 0 90px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgba(249, 197, 131, 0.3);
+`
 
-    h1 {
-        color: #ed7a3a;
-        font-size: 2rem;
-        font-weight: 800;
-        margin-bottom: 30px;
+const Cont = styled.div`
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+    padding-bottom: 288px;
+`;
+
+const FrameWrap = styled.div`
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 824px;
+    margin: 0 104px;
+    gap: 46px;
+`
+const Frame = styled.div`
+    img {
+        width: 469px;
+        height: 824px;
     }
 
-    section {
+    label {
         display: flex;
-        gap: 15px;
+        flex-direction: column;
+        align-items: center;
+    }
 
-        div.frameBtn {
-            position: relative;
-            padding: 0;
-            border: none;
-            background: none;
-            margin: 0;
-            cursor: pointer;
+    input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        appearance: none;
+        width: 80px;
+        height: 80px;
+        background-color: #D9D9D9;
+        border-radius: 50%;
+        margin-top: 86px;
+        cursor: pointer;
 
-            label {
-                height: 100%;
-                display: inline-block;
-            }
+        &:checked {
+            width: 126px;
+            height: 126px;
+            margin-top: 73px;
+            background-color: var(--main-color);
 
-            img {
-                width: 300px;
-                box-shadow: 0px 4px 44px 0px rgba(0, 0, 0, 0.1);
-            }
-
-            input {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                margin: 0;
+            &::after {
+                content: url(${checkIcon});
+                width: 62.5px;
             }
         }
     }
+`
+
+const Btn = styled.div`
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 288px;
+    background-color: var(--main-color);
+    bottom: 0;
+    font-size: 120px;
+    font-weight: 500;
+    color: var(--white-color);
 `;
