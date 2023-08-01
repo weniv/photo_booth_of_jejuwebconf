@@ -4,7 +4,7 @@ import styled from "styled-components";
 import QRCode from "react-qr-code";
 import Spinner from "../../assets/Spinner.gif";
 import html2canvas from "html2canvas";
-import {FRAME_W, FRAME_H, IMG_WRAP_W, IMG_WRAP_H, TOP_MARGIN, TOP_MARGIN_2} from "../../data/size"
+import downArrow from "../../assets/downArrow.svg"
 
 export default function PrintPage({ result }) {
     let idRef = useRef(1)
@@ -18,13 +18,14 @@ export default function PrintPage({ result }) {
         idRef.current++
         setIsQr(false);
         imageCaptureHandler();
-        setTimeout(() => {
-            setIsQr(true);
-        }, 500);
+        // setTimeout(() => {
+        //     setIsQr(true);
+        // }, 500);
     }, []);
 
     // 이미지 url 생성
     const createUrl = async (imgData) => {
+        console.log("imgData", imgData)
         const postData = {
             "fileName": imgData.name,
             "files": imgData
@@ -41,13 +42,14 @@ export default function PrintPage({ result }) {
               data: postData, 
             })
             setImgUrl(res.data.files)
+            setIsQr(true);
             return res
         } catch (err) {
             console.error(err);
         }
     };
 
-    // console.log("imgUrl", imgUrl)
+    console.log("imgUrl", imgUrl)
 
     
     // 화면 캡쳐
@@ -71,54 +73,92 @@ export default function PrintPage({ result }) {
     };
 
     return (
-        <>
-            <Wrap ref={contentRef} width={FRAME_W} height={FRAME_H} top={frameType === "WenivType2" ? TOP_MARGIN_2 : TOP_MARGIN}>
-                <Picture src={result} width={IMG_WRAP_W} height={IMG_WRAP_H}/>
-                <Frame src={process.env.PUBLIC_URL + `/images/${frameType}.svg`} alt="" width={FRAME_W} height={FRAME_H}/>
+        <Cont>
+            <Wrap ref={contentRef} top={frameType === "WenivType2" ? "126.26px": "342.26px"}>
+                <Picture src={result}/>
+                <Frame src={`/images/${frameType}.svg`} alt=""/>
             </Wrap>
 
-            <div>
-                <p>카메라로 qr코드를 스캔 후 사진을 저장해주세요!</p>
+            <QRWrap>
+                <p>QR코드를 통해 <br/>사진을 다운로드 하세요</p>
+                <img src={downArrow} alt="" />
                 {isQr ? (
-                    <>
-                        <QRCode value={imgUrl} />
-                    </>
+                    <div>
+                        <StyledQRCode value={imgUrl} />
+                    </div>
                 ) : (
                     <img src={Spinner} alt="로딩중" />
                 )}
-            </div>
-        </>
+            </QRWrap>
+        </Cont>
     );
 }
+
+const Cont = styled.div`
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    padding: 0 448px;
+`
 
 const Wrap =  styled.div`
     display: flex;
     justify-content: center;
     position: relative; 
-    width: ${(props) => props.width};
-    height: ${(props) => props.height};
+    width: 1004.9px;
+    height: 1767.85px;
     margin: 0 auto;
     padding-top: ${(props) =>  props.top};
-    background-color: pink;
+    background-color: var(--gray-color);
 `
 
 const Frame = styled.img`
     position: absolute;
-    width: ${(width) => width};
-    height: ${(height) => height};
+    width: 1004.9px;
+    height: 1767.85px;
     left: 0;
     top: 0;
 `
 
 const Picture = styled.img`
     position: absolute;
-    width: ${(width) => width};
-    height: ${(height) => height};
+    width: 879.48px;
+    height: 1299.64px;
 `;
 
-const Test = styled.img`
-    position: absolute;
-    width: ${(width) => width};
-    height: ${(height) => height};
-    background-color: red;
-`;
+const QRWrap = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+        font-size: 64px;
+        color: var(--main-color);
+        text-align: center;
+        font-weight: 300;
+        line-height: 74.56px;
+    }
+
+    img {
+        width: 80px;
+        margin: 22px 0 46px 0;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 440px;
+        height: 440px;
+        background-color: var(--main-color);
+        border-radius: 28px;
+    }
+`
+
+const StyledQRCode = styled(QRCode)`
+    width: 362px;
+    height: 362px;
+    border-radius: 18px;
+`

@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { styled } from "styled-components";
-import Confetti from "../../assets/confetti.svg";
+import downloadBg from "../../assets/downloadBg.svg"
 
 export default function DownloadPage() {
     const location = useLocation();
@@ -30,47 +30,38 @@ export default function DownloadPage() {
 
     return (
         <Cont>
-            <Frame>
-                <img src={url} />
-            </Frame>
-            <button onClick={() => downloadFile()}>download</button>
+            <img src="" alt="" />
+            <button type="button">Download</button>
         </Cont>
     );
 }
 
 const Cont = styled.div`
-    with: 100vw;
-    height: 100vh;
-    padding: 0 15vw;
-    background: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    background: url(${Confetti}) no-repeat;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(${downloadBg});
+    background-repeat: no-repeat;
     background-size: cover;
-
-    button {
-        background: #ed7a3a;
-        color: #fff;
-        font-weight: bold;
-        border: none;
-        width: 120px;
-        height: 35px;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-    }
-`;
-
-const Frame = styled.div`
-    width: 100%;
+    gap: 30.97px;
 
     img {
-        width: 100%;
-        box-shadow: 0px 4px 44px 0px rgba(0, 0, 0, 0.1);
+        width: 220px;
+        height: 387.03px;
+        background-color: var(--gray-color);
     }
-`;
+
+    button {
+        width: 130px;
+        height: 36px;
+        background-color: var(--main-color);
+        color: var(--white-color);
+        font-weight: 500;
+        font-size: 16px;
+        border-radius: 39px;
+        border: none;
+    }
+`

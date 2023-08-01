@@ -29,6 +29,7 @@ export default function SnapPage({ setResult }) {
     // 사진 촬영
     const snapShot = () => {
         console.log("촬영!");
+        audio.play()
         const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext("2d");
         canvas.width = WIDTH;
@@ -62,13 +63,6 @@ export default function SnapPage({ setResult }) {
         startVideo();
     }, []);
 
-    // useEffect(() => {
-    //     // if (picture.length >= 4) {
-    //     //     getPicture();
-    //     // }'
-    //     console.log("picture", picture)
-    // }, [picture]);
-
     // 타이머
     const timer = () => {
         const sec = setTimeout(() => {
@@ -76,14 +70,15 @@ export default function SnapPage({ setResult }) {
         }, 1000);
         if (time === 0) {
             snapShot();
-            audio.play()
             clearInterval(sec);
             setTime(10)
             setInterval(sec);
         } else if(picture.length === 4) {
             clearInterval(sec);
             getPicture();
-            navigate("/print");
+            setTimeout(() => {
+                navigate("/print");
+            }, 500)
         }
     };
 
@@ -96,7 +91,7 @@ export default function SnapPage({ setResult }) {
             <Wrap>
                 <h1>{time}</h1>
                 <Video autoPlay ref={videoRef} />
-                <Btn>
+                <Btn onClick={snapShot}>
                     <p>촬영중 입니다</p>
                 </Btn>
                 <h2>({picture.length + 1}/4)</h2>

@@ -1,0 +1,67 @@
+<svg width="360" height="640" viewBox="0 0 360 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_70_2)">
+<rect width="360" height="640" fill="#F3EBE0"/>
+<line x1="519" y1="0.50006" x2="-159" y2="0.500001" stroke="white"/>
+<line x1="519" y1="29.5001" x2="-159" y2="29.5" stroke="white"/>
+<line x1="519" y1="58.5001" x2="-159" y2="58.5" stroke="white"/>
+<line x1="519" y1="87.5001" x2="-159" y2="87.5" stroke="white"/>
+<line x1="519" y1="116.5" x2="-159" y2="116.5" stroke="white"/>
+<line x1="519" y1="145.5" x2="-159" y2="145.5" stroke="white"/>
+<line x1="519" y1="174.5" x2="-159" y2="174.5" stroke="white"/>
+<line x1="519" y1="203.5" x2="-159" y2="203.5" stroke="white"/>
+<line x1="519" y1="232.5" x2="-159" y2="232.5" stroke="white"/>
+<line x1="519" y1="261.5" x2="-159" y2="261.5" stroke="white"/>
+<line x1="519" y1="290.5" x2="-159" y2="290.5" stroke="white"/>
+<line x1="519" y1="319.5" x2="-159" y2="319.5" stroke="white"/>
+<line x1="519" y1="348.5" x2="-159" y2="348.5" stroke="white"/>
+<line x1="519" y1="377.5" x2="-159" y2="377.5" stroke="white"/>
+<line x1="519" y1="406.5" x2="-159" y2="406.5" stroke="white"/>
+<line x1="519" y1="435.5" x2="-159" y2="435.5" stroke="white"/>
+<line x1="519" y1="464.5" x2="-159" y2="464.5" stroke="white"/>
+<line x1="519" y1="493.5" x2="-159" y2="493.5" stroke="white"/>
+<line x1="519" y1="522.5" x2="-159" y2="522.5" stroke="white"/>
+<line x1="519" y1="551.5" x2="-159" y2="551.5" stroke="white"/>
+<line x1="519" y1="580.5" x2="-159" y2="580.5" stroke="white"/>
+<line x1="519" y1="609.5" x2="-159" y2="609.5" stroke="white"/>
+<line x1="519" y1="638.5" x2="-159" y2="638.5" stroke="white"/>
+<line x1="6.5" y1="-19" x2="6.49997" y2="659" stroke="white"/>
+<line x1="35.5" y1="-19" x2="35.5" y2="659" stroke="white"/>
+<line x1="64.5" y1="-19" x2="64.5" y2="659" stroke="white"/>
+<line x1="93.5" y1="-19" x2="93.5" y2="659" stroke="white"/>
+<line x1="122.5" y1="-19" x2="122.5" y2="659" stroke="white"/>
+<line x1="151.5" y1="-19" x2="151.5" y2="659" stroke="white"/>
+<line x1="180.5" y1="-19" x2="180.5" y2="659" stroke="white"/>
+<line x1="209.5" y1="-19" x2="209.5" y2="659" stroke="white"/>
+<line x1="238.5" y1="-19" x2="238.5" y2="659" stroke="white"/>
+<line x1="267.5" y1="-19" x2="267.5" y2="659" stroke="white"/>
+<line x1="296.5" y1="-19" x2="296.5" y2="659" stroke="white"/>
+<line x1="325.5" y1="-19" x2="325.5" y2="659" stroke="white"/>
+<line x1="354.5" y1="-19" x2="354.5" y2="659" stroke="white"/>
+<g opacity="0.4" filter="url(#filter0_f_70_2)">
+<path d="M-327.163 601.941C-325.153 609.671 -322.603 617.251 -319.703 624.691C-313.233 641.261 -300.183 697.171 -343.113 762.091C-435.543 901.861 -278.743 1001.39 -156.603 889.161C-34.4628 776.931 -17.9628 771.971 95.9272 732.361C209.807 692.751 239.577 507.011 -14.6528 398.961C-142.653 344.571 -376.093 414.131 -327.163 601.941Z" fill="#F6B35A"/>
+</g>
+<g opacity="0.4" filter="url(#filter1_f_70_2)">
+<path d="M251.837 -157.059C253.847 -149.329 256.397 -141.749 259.297 -134.309C265.767 -117.739 278.817 -61.8294 235.887 3.09064C143.457 142.861 300.257 242.391 422.397 130.161C544.537 17.9306 561.037 12.9706 674.927 -26.6394C788.807 -66.2494 818.577 -251.989 564.347 -360.039C436.347 -414.429 202.907 -344.869 251.837 -157.059Z" fill="#F6B35A"/>
+</g>
+<path d="M307 97L308.781 102.83L315 104.5L308.781 106.17L307 112L305.219 106.17L299 104.5L305.219 102.83L307 97Z" fill="white"/>
+<path d="M292.5 71L295.061 79.5505L304 82L295.061 84.4495L292.5 93L289.939 84.4495L281 82L289.939 79.5505L292.5 71Z" fill="white"/>
+<path d="M68 501L69.5588 506.441L75 508L69.5588 509.559L68 515L66.4412 509.559L61 508L66.4412 506.441L68 501Z" fill="white"/>
+<circle cx="309.5" cy="87.5" r="2.5" fill="#F6B35A"/>
+<circle cx="85.5" cy="505.5" r="2.5" fill="#F6B35A"/>
+</g>
+<defs>
+<filter id="filter0_f_70_2" x="-431" y="321" width="671.376" height="676.625" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="30" result="effect1_foregroundBlur_70_2"/>
+</filter>
+<filter id="filter1_f_70_2" x="148" y="-438" width="671.376" height="676.625" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="30" result="effect1_foregroundBlur_70_2"/>
+</filter>
+<clipPath id="clip0_70_2">
+<rect width="360" height="640" fill="white"/>
+</clipPath>
+</defs>
+</svg>
