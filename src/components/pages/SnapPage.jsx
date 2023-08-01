@@ -3,14 +3,16 @@ import { useNavigate } from "react-router-dom";
 import html2canvas from "html2canvas";
 import styled from "styled-components";
 import {IMG_W,IMG_H, IMG_WRAP_W, IMG_WRAP_H} from "../../data/size"
+import sound from '../../assets/camera.wav'
 
 const CONSTRAINTS = { video: true };
-const WIDTH = 689.69 / 4.5;
-const HEIGHT = 1043.82 / 4.5;
+const WIDTH = 872;
+const HEIGHT = 1320;
+const audio = new Audio(sound)
 
 export default function SnapPage({ setResult }) {
     const [picture, setPicture] = useState([]);
-    const [time, setTime] = useState(40);
+    const [time, setTime] = useState(10);
     let pictureId = useRef(1);
     const picWrapRef = useRef(null);
     const videoRef = useRef(null);
@@ -60,16 +62,12 @@ export default function SnapPage({ setResult }) {
         startVideo();
     }, []);
 
-    // 사진 4장 촬영 후 다음 페이지로 이동, 일단 1초 delay 넣어둠
-    // 이동하기전에 다음 페이지로 이동합니다 문구 넣어주면 좋을듯
-    useEffect(() => {
-        if (picture.length >= 4) {
-            getPicture();
-            setTimeout(() => {
-                navigate(process.env.PUBLIC_URL + "/print");
-            }, 1000);
-        }
-    }, [picture]);
+    // useEffect(() => {
+    //     // if (picture.length >= 4) {
+    //     //     getPicture();
+    //     // }'
+    //     console.log("picture", picture)
+    // }, [picture]);
 
     // 타이머
     const timer = () => {
@@ -77,10 +75,15 @@ export default function SnapPage({ setResult }) {
             setTime(time - 1);
         }, 1000);
         if (time === 0) {
-            navigate("/print");
-            clearInterval(sec);
-        } else if (time % 10 === 9) {
             snapShot();
+            audio.play()
+            clearInterval(sec);
+            setTime(10)
+            setInterval(sec);
+        } else if(picture.length === 4) {
+            clearInterval(sec);
+            getPicture();
+            navigate("/print");
         }
     };
 
@@ -89,11 +92,14 @@ export default function SnapPage({ setResult }) {
     }, [time]);
 
     return (
-        <>
+        <Cont>
             <Wrap>
-                <Video autoPlay ref={videoRef} />
-                <button onClick={snapShot}>촬영</button>
                 <h1>{time}</h1>
+                <Video autoPlay ref={videoRef} />
+                <Btn>
+                    <p>촬영중 입니다</p>
+                </Btn>
+                <h2>({picture.length + 1}/4)</h2>
             </Wrap>
             <div>
                 <PicWrap ref={picWrapRef} width={IMG_WRAP_W} height={IMG_WRAP_H}>
@@ -101,18 +107,52 @@ export default function SnapPage({ setResult }) {
                 </PicWrap>
             </div>
             <canvas id="canvas" style={{ display: "none" }}></canvas>
-        </>
+        </Cont>
     );
 }
 
+const Cont = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    overflow: hidden;
+`
+
 const Wrap = styled.div`
-    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-bottom: 288px;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+
+    h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 154px;
+        height: 154px;
+        font-size: 80px;
+        background-color: var(--white-color);
+        color: var(--main-color);
+        border-radius: 16px;
+    }
+
+    h2 {
+        font-size: 64px;
+        color: var(--main-color);
+    }
 `;
 
 const Video = styled.video`
+    width: 872px;
+    height: 1320px;
+    object-fit: cover;
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg); /* Safari and Chrome */
     -moz-transform: rotateY(180deg);
+    background-color: var(--gray-color);
 `;
 
 const PicWrap = styled.div`
@@ -127,4 +167,21 @@ const PicWrap = styled.div`
 const Picture = styled.img`
     width: ${({ width }) => width};
     height: ${({ height }) => height};
+`;
+
+const Btn = styled.div`
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 288px;
+    background-color: var(--main-color);
+    bottom: 0;
+
+    p {
+        font-size: 120px;
+        font-weight: 500;
+        color: var(--white-color);
+    }
 `;

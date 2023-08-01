@@ -96,7 +96,7 @@ const Frame = styled.div`
         appearance: none;
         width: 80px;
         height: 80px;
-        background-color: #D9D9D9;
+        background-color: var(--gray-color);
         border-radius: 50%;
         margin-top: 86px;
         cursor: pointer;
