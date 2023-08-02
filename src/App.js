@@ -15,6 +15,7 @@ function App() {
                 <Route path="/snap" element={<SnapPage setResult={setResult} />} />
                 <Route path="/print" element={<PrintPage result={result} />} />
                 <Route path="/download/:imgUrl/*" element={<DownloadPage />} />
+                <Route path="/*" element={<StartPage />} />
             </Routes>
         </div>
     );

@@ -24,7 +24,6 @@ export default function FramePage() {
     const [frameType, setFrameType] = useState("");
 
     const saveFrame = (e) => {
-        console.log(e.target.id)
         setFrameType(e.target.id);
     };
 

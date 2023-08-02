@@ -28,7 +28,6 @@ export default function SnapPage({ setResult }) {
 
     // 사진 촬영
     const snapShot = () => {
-        console.log("촬영!");
         audio.play()
         const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext("2d");
@@ -78,7 +77,7 @@ export default function SnapPage({ setResult }) {
             getPicture();
             setTimeout(() => {
                 navigate("/print");
-            }, 500)
+            }, 1000)
         }
     };
 
@@ -91,7 +90,7 @@ export default function SnapPage({ setResult }) {
             <Wrap>
                 <h1>{time}</h1>
                 <Video autoPlay ref={videoRef} />
-                <Btn onClick={snapShot}>
+                <Btn>
                     <p>촬영중 입니다</p>
                 </Btn>
                 <h2>({picture.length + 1}/4)</h2>

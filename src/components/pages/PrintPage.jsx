@@ -6,31 +6,39 @@ import Spinner from "../../assets/Spinner.gif";
 import html2canvas from "html2canvas";
 import downArrow from "../../assets/downArrow.svg"
 
+const baseURL = `https://whimsical-cheesecake-584645.netlify.app/download/`
+// const baseURL = `http://localhost:3000/download/` // 개발 테스트용
+
 export default function PrintPage({ result }) {
     let idRef = useRef(1)
     const [imgUrl, setImgUrl] = useState("");
     const [isQr, setIsQr] = useState(false);
+    const [qrValue, setQrValue] = useState("");
     const frameType = localStorage.getItem("frameType");
+    const date = new Date()
+    const createdDate = `${date.getFullYear()}${("0" + (date.getMonth() + 1)).slice(-2)}${("0" + date.getDate()).slice(-2)}`
 
     const contentRef = useRef();
 
     useEffect(() => {
-        idRef.current++
         setIsQr(false);
         imageCaptureHandler();
-        // setTimeout(() => {
-        //     setIsQr(true);
-        // }, 500);
-    }, []);
+    },[])
+
+    useEffect(() => {
+        const specificUrl = imgUrl.split("images/")[1];
+        setQrValue(baseURL + specificUrl);
+    }, [imgUrl]);
+
 
     // 이미지 url 생성
     const createUrl = async (imgData) => {
-        console.log("imgData", imgData)
+        idRef.current++
         const postData = {
             "fileName": imgData.name,
             "files": imgData
         }
-
+        
         try {
             const res = await axios({
               method: "POST",
@@ -48,16 +56,11 @@ export default function PrintPage({ result }) {
             console.error(err);
         }
     };
-
-    console.log("imgUrl", imgUrl)
-
     
     // 화면 캡쳐
     const imageCaptureHandler = async () => {
         if (!contentRef.current) return;
         const result = contentRef.current
-        const date = new Date()
-        const createdDate = `${date.getFullYear()}${date.getMonth()+1}${date.getDate()}`
 
         try {
             const canvas = await html2canvas(result, { scale: 2 });
@@ -72,6 +75,8 @@ export default function PrintPage({ result }) {
         }
     };
 
+    // console.log(qrValue)
+
     return (
         <Cont>
             <Wrap ref={contentRef} top={frameType === "WenivType2" ? "126.26px": "342.26px"}>
@@ -84,7 +89,7 @@ export default function PrintPage({ result }) {
                 <img src={downArrow} alt="" />
                 {isQr ? (
                     <div>
-                        <StyledQRCode value={imgUrl} />
+                        <StyledQRCode value={qrValue} />
                     </div>
                 ) : (
                     <img src={Spinner} alt="로딩중" />

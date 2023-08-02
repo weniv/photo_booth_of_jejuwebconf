@@ -4,7 +4,9 @@ import downloadBg from "../../assets/downloadBg.svg"
 
 export default function DownloadPage() {
     const location = useLocation();
-    const url = "https://" + location.pathname.split("download/:")[1];
+    const url = "http://54.180.195.162:8000/media/images/" + location.pathname.split("download/")[1];
+
+    // console.log("url", url)
 
     const downloadFile = () => {
         fetch(url, { method: "GET" })
@@ -30,8 +32,8 @@ export default function DownloadPage() {
 
     return (
         <Cont>
-            <img src="" alt="" />
-            <button type="button">Download</button>
+            <img src={url} alt="" />
+            <button type="button" onClick={downloadFile}>Download</button>
         </Cont>
     );
 }
