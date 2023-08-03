@@ -53,6 +53,7 @@ export default function PrintPage({ result }) {
                 "Content-Type": "multipart/form-data",
               },
               data: postData, 
+              maxRedirects: 0
             })
             setImgUrl(res.data.files)
             setIsQr(true);
