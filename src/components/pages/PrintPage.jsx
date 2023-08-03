@@ -43,7 +43,7 @@ export default function PrintPage({ result }) {
         try {
             const res = await axios({
               method: "POST",
-              url: `http://54.180.195.162:8000/photo/`,
+              url: `/photo/`,
               mode: "cors",
               headers: {
                 "Content-Type": "multipart/form-data",
