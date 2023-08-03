@@ -27,8 +27,7 @@ export default function PrintPage({ result }) {
     },[])
 
     useEffect(() => {
-        const specificUrl = imgUrl && imgUrl.split("images/")[1];
-        console.log("specificUrl", specificUrl)
+        const specificUrl = imgUrl.split("images/")[1];
         setQrValue(baseURL + specificUrl);
     }, [imgUrl]);
 
@@ -44,7 +43,7 @@ export default function PrintPage({ result }) {
         try {
             const res = await axios({
               method: "POST",
-              url: `/photo/`,
+              url: `http://54.180.195.162:8000/photo/`,
               mode: "cors",
               headers: {
                 "Content-Type": "multipart/form-data",
@@ -91,7 +90,7 @@ export default function PrintPage({ result }) {
                 <img src={downArrow} alt="" />
                 {isQr ? (
                     <div>
-                        <StyledQRCode value={qrValue && qrValue} />
+                        <StyledQRCode value={qrValue} />
                     </div>
                 ) : (
                     <img src={Spinner} alt="로딩중" />
