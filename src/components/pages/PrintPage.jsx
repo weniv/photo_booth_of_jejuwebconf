@@ -27,7 +27,7 @@ export default function PrintPage({ result }) {
     },[])
 
     useEffect(() => {
-        const specificUrl = imgUrl.split("images/")[1];
+        const specificUrl = imgUrl && imgUrl.split("images/")[1];
         console.log("specificUrl", specificUrl)
         setQrValue(baseURL + specificUrl);
     }, [imgUrl]);
@@ -91,7 +91,7 @@ export default function PrintPage({ result }) {
                 <img src={downArrow} alt="" />
                 {isQr ? (
                     <div>
-                        <StyledQRCode value={qrValue} />
+                        <StyledQRCode value={qrValue && qrValue} />
                     </div>
                 ) : (
                     <img src={Spinner} alt="로딩중" />
