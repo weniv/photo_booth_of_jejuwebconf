@@ -6,9 +6,8 @@ import Spinner from "../../assets/Spinner.gif";
 import html2canvas from "html2canvas";
 import downArrow from "../../assets/downArrow.svg"
 
-// const baseURL = `https://whimsical-cheesecake-584645.netlify.app/download/`
-const baseURL = `http://localhost:3000/download/` // 개발 테스트용
-// const baseURL = `http://54.180.195.162:8000/download/` // 개발 테스트용 - 서버
+const baseURL = `https://main--remarkable-dusk-d596ef.netlify.app/download/`
+// const baseURL = `http://localhost:3000/download/` // 개발 테스트용
 
 
 export default function PrintPage({ result }) {
@@ -81,7 +80,7 @@ export default function PrintPage({ result }) {
 
     return (
         <Cont>
-            <Wrap ref={contentRef} top={frameType === "WenivType2" ? "126.26px": "342.26px"}>
+            <Wrap ref={contentRef} top={frameType === "WenivType2" ? `126.26`: "342.26"}>
                 <Picture src={result}/>
                 <Frame src={process.env.PUBLIC_URL + `/images/${frameType}.svg`} alt=""/>
             </Wrap>
@@ -107,32 +106,34 @@ const Cont = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: var(--bg-color);
-    padding: 0 448px;
+    padding: 0 calc(448 / 2048 * 100vh);
 `
 
 const Wrap =  styled.div`
     display: flex;
     justify-content: center;
     position: relative; 
-    width: 1004.9px;
-    height: 1767.85px;
+    width: calc(1004.9 / 2732 * 100vw);
+    height: calc(1767.85 / 2048 * 100vh);
     margin: 0 auto;
-    padding-top: ${(props) =>  props.top};
+    padding-top: ${(props) => `calc(${props.top} / 2048 * 100vh)`};
     background-color: var(--gray-color);
 `
 
 const Frame = styled.img`
     position: absolute;
-    width: 1004.9px;
-    height: 1767.85px;
+    width: calc(1004.9 / 2732 * 100vw);
+    height: calc(1767.85 / 2048 * 100vh);
     left: 0;
     top: 0;
 `
 
 const Picture = styled.img`
     position: absolute;
-    width: 879.48px;
-    height: 1299.64px;
+    width: calc(879.48 / 2732 * 100vw);
+    height: calc(1299.64 / 2048 * 100vh);
+    object-fit: cover;
+    background-color: pink;
 `;
 
 const QRWrap = styled.div`
@@ -141,31 +142,31 @@ const QRWrap = styled.div`
     align-items: center;
 
     p {
-        font-size: 64px;
+        font-size: 4rem;
         color: var(--main-color);
         text-align: center;
         font-weight: 300;
-        line-height: 74.56px;
+        line-height: calc(74.56 / 2732 * 100vw);
     }
 
     img {
-        width: 80px;
-        margin: 22px 0 46px 0;
+        width: calc(80 / 2732 * 100vw);
+        margin: calc(22 / 2732 * 100vw) 0 calc(46 / 2732 * 100vw) 0;
     }
 
     div {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 440px;
-        height: 440px;
+        width: calc(440 / 2732 * 100vw);
+        height: calc(440 / 2732 * 100vw);
         background-color: var(--main-color);
         border-radius: 28px;
     }
 `
 
 const StyledQRCode = styled(QRCode)`
-    width: 362px;
-    height: 362px;
+    width: calc(362 / 2732 * 100vw);
+    height: calc(362 / 2732 * 100vw);
     border-radius: 18px;
 `

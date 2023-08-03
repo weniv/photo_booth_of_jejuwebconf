@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import html2canvas from "html2canvas";
 import styled from "styled-components";
-import {IMG_W,IMG_H, IMG_WRAP_W, IMG_WRAP_H} from "../../data/size"
 import sound from '../../assets/camera.wav'
 
 const CONSTRAINTS = { video: true };
-const WIDTH = 872;
-const HEIGHT = 1320;
+const WIDTH = 1210;
+const HEIGHT = 1043.82;
+
 const audio = new Audio(sound)
 
 export default function SnapPage({ setResult }) {
@@ -91,16 +91,16 @@ export default function SnapPage({ setResult }) {
                 <h1>{time}</h1>
                 <Video autoPlay ref={videoRef} />
                 <Btn>
-                    <p>촬영중 입니다</p>
+                    <p onClick={snapShot}>촬영중 입니다</p>
                 </Btn>
-                <h2>({picture.length + 1}/4)</h2>
+                <h2>({picture.length}/4)</h2>
             </Wrap>
             <div>
-                <PicWrap ref={picWrapRef} width={IMG_WRAP_W} height={IMG_WRAP_H}>
-                    {picture && picture.map((pic, idx) => <Picture width={IMG_W} height={IMG_H} src={pic} key={idx} alt={`${idx + 1}번 사진`} />)}
+                <PicWrap ref={picWrapRef}>
+                    {picture && picture.map((pic, idx) => <Picture src={pic} key={idx} alt={`${idx + 1}번 사진`}></Picture>)}
                 </PicWrap>
             </div>
-            <canvas id="canvas" style={{ display: "none" }}></canvas>
+            <canvas id="canvas" style={{ display: "none", objectFit: "cover" }}></canvas>
         </Cont>
     );
 }
@@ -109,39 +109,40 @@ const Cont = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: var(--bg-color);
-    overflow: hidden;
+    /* overflow: hidden; */
 `
 
 const Wrap = styled.div`
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding-bottom: 288px;
+    padding-bottom: 14.0625vh;
     align-items: center;
     justify-content: center;
-    gap: 36px;
+    gap: 1.317715959vw;
+    object-fit: cover;
 
     h1 {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 154px;
-        height: 154px;
-        font-size: 80px;
+        width: 5.63689604685vw;
+        height: 5.63689604685vw;
+        font-size: 5rem;
         background-color: var(--white-color);
         color: var(--main-color);
         border-radius: 16px;
     }
 
     h2 {
-        font-size: 64px;
+        font-size: 4rem;
         color: var(--main-color);
     }
 `;
 
 const Video = styled.video`
-    width: 872px;
-    height: 1320px;
+    width: 31.91800878477vw;
+    height: 64.453125vh;
     object-fit: cover;
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg); /* Safari and Chrome */
@@ -150,19 +151,17 @@ const Video = styled.video`
 `;
 
 const PicWrap = styled.div`
-    width: ${({ width }) => width};
-    height: ${({ height }) => height};
+    width: 52.96486090776vw;
+    height: 104.40283203125vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: space-between;
-    object-fit: cover;
-
 `;
 
 const Picture = styled.img`
-    width: ${({ width }) => width};
-    height: ${({ height }) => height};
+    width: 25.24487554905vw;
+    height: 50.9677734375vh;
     object-fit: cover;
 `;
 
@@ -172,12 +171,12 @@ const Btn = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 288px;
+    height: 14.0625vh;
     background-color: var(--main-color);
     bottom: 0;
 
     p {
-        font-size: 120px;
+        font-size: 7.5rem;
         font-weight: 500;
         color: var(--white-color);
     }

@@ -23,8 +23,28 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html {
+        font-size: 16px;
         font-family: 'GongGothicMedium';
+        /* overflow: hidden; */
     }
+
+@media (min-width: 1581px) and (max-width: 1920px) {
+	html {
+		font-size: 12px;
+	}
+}
+
+@media (min-width: 1201px) and (max-width: 1580px) {
+	html {
+		font-size: 8px;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	html {
+		font-size: 6px;
+	}
+}
 `;
 
 export default GlobalStyles;

@@ -65,21 +65,20 @@ const Cont = styled.div`
     align-items: center;
     justify-content: center;
     background-color: var(--bg-color);
-    padding-bottom: 288px;
+    padding-bottom: 14.0625vh;
 `;
 
 const FrameWrap = styled.div`
     position: relative;
     display: flex;
+    justify-content: center;
     width: 100%;
-    height: 824px;
-    margin: 0 104px;
-    gap: 46px;
+    height: 40.234375vh;
+    gap: 1.68931325744vw;
 `
 const Frame = styled.div`
     img {
-        width: 469px;
-        height: 824px;
+        height: 40.234375vh;
     }
 
     label {
@@ -93,22 +92,28 @@ const Frame = styled.div`
         align-items: center;
         justify-content: center;
         appearance: none;
-        width: 80px;
-        height: 80px;
+        width: 3.90625vh;
+        height: 3.90625vh;
         background-color: var(--gray-color);
         border-radius: 50%;
-        margin-top: 86px;
+        margin-top: 4.19921875vh;
         cursor: pointer;
 
         &:checked {
-            width: 126px;
-            height: 126px;
-            margin-top: 73px;
+            position: relative;
+            width: 6.15234375vh;
+            height: 6.15234375vh;
+            /* margin-top: 3.564453125vh; */
             background-color: var(--main-color);
 
             &::after {
-                content: url(${checkIcon});
-                width: 62.5px;
+                content: "";
+                display: block;
+                width: 2.28770131772vw;
+                height: 2.2216796875vh;
+                background-image: url(${checkIcon});
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
             }
         }
     }
@@ -120,10 +125,10 @@ const Btn = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 288px;
+    height: 14.0625vh;
     background-color: var(--main-color);
     bottom: 0;
-    font-size: 120px;
+    font-size: 7.5rem;
     font-weight: 500;
     color: var(--white-color);
 `;

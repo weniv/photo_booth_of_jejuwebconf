@@ -30,11 +30,11 @@ const Cont = styled.div`
     align-items: center;
     justify-content: center;
     background-color: var(--bg-color);
-    padding-bottom: 288px;
+    padding-bottom: 14.0625vh;
 `;
 
 const Img = styled.img`
-    height: 1226px;
+    width:45.02387073081vw;
 `
 
 const Btn = styled.div`
@@ -43,12 +43,13 @@ const Btn = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 288px;
+    height: 14.0625vh;
     background-color: var(--main-color);
     bottom: 0;
+    font-size: 20%;
 
     p {
-        font-size: 120px;
+        font-size: 7.5rem;
         font-weight: 500;
         color: var(--white-color);
     }
