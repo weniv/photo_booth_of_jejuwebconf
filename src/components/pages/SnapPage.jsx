@@ -156,11 +156,14 @@ const PicWrap = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: space-between;
+    object-fit: cover;
+
 `;
 
 const Picture = styled.img`
     width: ${({ width }) => width};
     height: ${({ height }) => height};
+    object-fit: cover;
 `;
 
 const Btn = styled.div`

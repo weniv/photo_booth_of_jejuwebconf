@@ -6,8 +6,10 @@ import Spinner from "../../assets/Spinner.gif";
 import html2canvas from "html2canvas";
 import downArrow from "../../assets/downArrow.svg"
 
-const baseURL = `https://whimsical-cheesecake-584645.netlify.app/download/`
-// const baseURL = `http://localhost:3000/download/` // 개발 테스트용
+// const baseURL = `https://whimsical-cheesecake-584645.netlify.app/download/`
+const baseURL = `http://localhost:3000/download/` // 개발 테스트용
+// const baseURL = `http://54.180.195.162:8000/download/` // 개발 테스트용 - 서버
+
 
 export default function PrintPage({ result }) {
     let idRef = useRef(1)
@@ -75,13 +77,13 @@ export default function PrintPage({ result }) {
         }
     };
 
-    // console.log(qrValue)
+    console.log(qrValue)
 
     return (
         <Cont>
             <Wrap ref={contentRef} top={frameType === "WenivType2" ? "126.26px": "342.26px"}>
                 <Picture src={result}/>
-                <Frame src={`/images/${frameType}.svg`} alt=""/>
+                <Frame src={process.env.PUBLIC_URL + `/images/${frameType}.svg`} alt=""/>
             </Wrap>
 
             <QRWrap>
