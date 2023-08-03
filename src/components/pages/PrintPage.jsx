@@ -28,6 +28,7 @@ export default function PrintPage({ result }) {
 
     useEffect(() => {
         const specificUrl = imgUrl.split("images/")[1];
+        console.log("specificUrl", specificUrl)
         setQrValue(baseURL + specificUrl);
     }, [imgUrl]);
 
@@ -76,7 +77,7 @@ export default function PrintPage({ result }) {
         }
     };
 
-    console.log(qrValue)
+    console.log("qrValue", qrValue)
 
     return (
         <Cont>

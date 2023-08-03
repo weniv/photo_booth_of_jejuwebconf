@@ -6,8 +6,6 @@ export default function DownloadPage() {
     const location = useLocation();
     const url = "http://54.180.195.162:8000/media/images/" + location.pathname.split("download/")[1];
 
-    console.log("url", url)
-
     const downloadFile = () => {
         fetch(url, { method: "GET" })
             .then((res) => {
