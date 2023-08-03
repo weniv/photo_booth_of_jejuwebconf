@@ -26,9 +26,13 @@ export default function PrintPage({ result }) {
         imageCaptureHandler();
     },[])
 
+    console.log("imgUrl", imgUrl)
+
     useEffect(() => {
-        const specificUrl = imgUrl.split("images/")[1];
-        setQrValue(baseURL + specificUrl);
+        if(imgUrl.length > 1) {
+            const specificUrl = imgUrl.split("images/")[1];
+            setQrValue(baseURL + specificUrl);
+        }
     }, [imgUrl]);
 
 
@@ -52,6 +56,7 @@ export default function PrintPage({ result }) {
               data: postData, 
             })
             setImgUrl(res.data.files)
+            console.log("res.data.files", res.data.files)
             setIsQr(true);
             return res
         } catch (err) {
@@ -78,6 +83,8 @@ export default function PrintPage({ result }) {
     };
 
     console.log("qrValue", qrValue)
+    console.log("isQr", isQr)
+
 
     return (
         <Cont>
