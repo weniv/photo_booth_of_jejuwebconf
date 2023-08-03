@@ -44,7 +44,7 @@ export default function PrintPage({ result }) {
             "files": imgData
         }
         
-        try {
+        // try {
             const res = await axios({
               method: "POST",
               url: `http://54.180.195.162:8000/photo/`,
@@ -57,9 +57,9 @@ export default function PrintPage({ result }) {
             setImgUrl(res.data.files)
             setIsQr(true);
             return res
-        } catch (err) {
-            console.error(err);
-        }
+        // } catch (err) {
+        //     console.error(err);
+        // }
     };
     
     // 화면 캡쳐
