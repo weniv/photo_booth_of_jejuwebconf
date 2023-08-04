@@ -96,7 +96,7 @@ export default function PrintPage({ result }) {
                 <img src={downArrow} alt="" />
                 {isQr && qrValue ? (
                     <div>
-                        <StyledQRCode value={qrValue} />
+                        <StyledQRCode value={qrValue && qrValue} />
                     </div>
                 ) : (
                     <img src={Spinner} alt="로딩중" />
