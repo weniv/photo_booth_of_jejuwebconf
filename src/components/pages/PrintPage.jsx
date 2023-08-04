@@ -162,18 +162,14 @@ const QRWrap = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        /* width: calc(440 / 2732 * 100vw);
-        height: calc(440 / 2732 * 100vw); */
         width: calc(${window.innerWidth}/2732 * 440 * 0.35px);
-        margin: calc(${window.innerWidth}/2732 * 400 * 0.35px);
+        height: calc(${window.innerWidth}/2732 * 440 * 0.35px);
         background-color: var(--main-color);
         border-radius: 28px;
     }
 `
 
 const StyledQRCode = styled(QRCode)`
-    /* width: calc(362 / 2732 * 100vw);
-    height: calc(362 / 2732 * 100vw); */
     width: calc(${window.innerWidth}/2732 * 362 * 0.35px);
     margin: calc(${window.innerWidth}/2732 * 362 * 0.35px);
     border-radius: 18px;

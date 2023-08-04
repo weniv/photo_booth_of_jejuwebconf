@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
     html {
         font-size: 16px;
         font-family: 'GongGothicMedium';
-        /* overflow: hidden; */
+        overflow: hidden;
     }
 
 /* @media (min-width: 1601px) and (max-width: 1920px) {

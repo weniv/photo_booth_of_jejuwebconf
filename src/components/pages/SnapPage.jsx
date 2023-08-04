@@ -91,7 +91,7 @@ export default function SnapPage({ setResult }) {
                 <h1>{time}</h1>
                 <Video autoPlay ref={videoRef} />
                 <Btn>
-                    <p onClick={snapShot}>촬영중 입니다</p>
+                    <p>촬영중 입니다</p>
                 </Btn>
                 <h2>({picture.length}/4)</h2>
             </Wrap>
@@ -140,12 +140,6 @@ const Wrap = styled.div`
     }
 `;
 
-// width: 419.2808532714844px
-// height: 634.5662231445312px
-// top: 482.2618103027344px
-// left: 510.615234375px
-
-
 const Video = styled.video`
     width: calc((${window.innerWidth}/2732 * 419)*1.2px);
     height: calc((${window.innerWidth}/2732 * 634)*1.2px);
@@ -157,17 +151,13 @@ const Video = styled.video`
 `;
 
 const PicWrap = styled.div`
-    /* width: 52.96486090776vw;
-    height: 104.40283203125vh; */
     width: calc(879.48px);
     height: calc(1299.64px);
-    /* width: 419px;
-    height: 634px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: space-between;
-    background-color: pink;
+    /* background-color: pink; */
 `;
 
 const Picture = styled.img`
