@@ -48,7 +48,7 @@ export default function PrintPage({ result }) {
         try {
             const res = await axios({
               method: "POST",
-              url: `http://conf.weniv.co.kr/photo/`,
+              url: `https://conf.weniv.co.kr/photo/`,
               mode: "cors",
               headers: {
                 "Content-Type": "multipart/form-data",
