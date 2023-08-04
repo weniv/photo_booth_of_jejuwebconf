@@ -4,7 +4,7 @@ import downloadBg from "../../assets/downloadBg.svg"
 
 export default function DownloadPage() {
     const location = useLocation();
-    const url = "http://54.180.195.162:8000/media/images/" + location.pathname.split("download/")[1];
+    const url = "https://conf.weniv.co.kr/media/images/" + location.pathname.split("download/")[1];
 
     const downloadFile = () => {
         fetch(url, { method: "GET" })
