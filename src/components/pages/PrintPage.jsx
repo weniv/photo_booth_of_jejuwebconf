@@ -6,7 +6,8 @@ import Spinner from "../../assets/Spinner.gif";
 import html2canvas from "html2canvas";
 import downArrow from "../../assets/downArrow.svg"
 
-const baseURL = `http://3.35.8.66/download/`
+// const baseURL = `http://3.35.8.66/download/`
+const baseURL = `https://main--remarkable-dusk-d596ef.netlify.app/download/`
 // const baseURL = `http://localhost:3000/download/` // 개발 테스트용
 
 
@@ -47,7 +48,7 @@ export default function PrintPage({ result }) {
         try {
             const res = await axios({
               method: "POST",
-              url: `http://54.180.195.162:8000/photo/`,
+              url: `http://conf.weniv.co.kr/photo/`,
               mode: "cors",
               headers: {
                 "Content-Type": "multipart/form-data",
@@ -82,6 +83,8 @@ export default function PrintPage({ result }) {
 
     // console.log("qrValue", qrValue)
     // console.log("isQr", isQr)
+
+    console.log("result", result)
 
 
     return (
