@@ -98,11 +98,15 @@ export default function PrintPage({ result }) {
                 <p>QR코드를 통해 <br/>사진을 다운로드 하세요</p>
                 <img src={downArrow} alt="" />
                 {isQr && qrValue ? (
-                    <div>
-                        <StyledQRCode value={qrValue && qrValue} />
+                    <div className="qr">
+                        <div>
+                            <StyledQRCode value={qrValue && qrValue} />
+                        </div>
                     </div>
                 ) : (
-                    <img src={Spinner} alt="로딩중" />
+                    <Loading>
+                        <img src={Spinner} alt="로딩중" />
+                    </Loading>
                 )}
             </QRWrap>
         </Cont>
@@ -161,7 +165,7 @@ const QRWrap = styled.div`
         margin: calc(${window.innerWidth}/2732 * 11 * 0.35px) 0 calc(${window.innerWidth}/2732 * 46 * 0.35px);
     }
 
-    div {
+    div.qr {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -169,10 +173,29 @@ const QRWrap = styled.div`
         height: calc(${window.innerWidth}/2732 * 440 * 0.35px);
         background-color: var(--main-color);
         border-radius: 28px;
+
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: calc(${window.innerWidth}/2732 * 362 * 0.35px);
+            height: calc(${window.innerWidth}/2732 * 362 * 0.35px);
+            background-color: var(--white-color);
+            border-radius: 18px;
+        }
+    }
+`
+
+const Loading = styled.div`
+    img {
+        width: calc(${window.innerWidth}/2732 * 330 * 0.35px);
+        height: calc(${window.innerWidth}/2732 * 330 * 0.35px);
+        object-fit: cover;
     }
 `
 
 const StyledQRCode = styled(QRCode)`
-    width: calc(${window.innerWidth}/2732 * 362 * 0.35px);
-    border-radius: 18px;
+    width: calc(${window.innerWidth}/2732 * 277 * 0.35px);
+    height: calc(${window.innerWidth}/2732 * 277 * 0.35px);
+
 `
