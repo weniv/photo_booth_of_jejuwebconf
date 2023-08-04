@@ -171,6 +171,5 @@ const QRWrap = styled.div`
 
 const StyledQRCode = styled(QRCode)`
     width: calc(${window.innerWidth}/2732 * 362 * 0.35px);
-    margin: calc(${window.innerWidth}/2732 * 362 * 0.35px);
     border-radius: 18px;
 `
