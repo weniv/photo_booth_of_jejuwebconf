@@ -26,7 +26,7 @@ export default function PrintPage({ result }) {
         imageCaptureHandler();
     },[])
 
-    console.log("imgUrl", imgUrl)
+    // console.log("imgUrl", imgUrl)
 
     useEffect(() => {
         if(imgUrl.length > 1) {
@@ -53,7 +53,6 @@ export default function PrintPage({ result }) {
                 "Content-Type": "multipart/form-data",
               },
               data: postData, 
-              maxRedirects: 0
             })
             setImgUrl(res.data.files)
             setIsQr(true);
@@ -72,7 +71,7 @@ export default function PrintPage({ result }) {
             const canvas = await html2canvas(result, { scale: 2 });
             canvas.toBlob((myBlob) => {
                 const myFile = new File([myBlob], `${createdDate}-${idRef.current}.jpeg`, {
-                    type: myBlob.type,
+                    type: myBlob && myBlob.type,
                 });
                 createUrl(myFile);
             }, "image/jpeg");
@@ -87,7 +86,7 @@ export default function PrintPage({ result }) {
 
     return (
         <Cont>
-            <Wrap ref={contentRef} top={frameType === "WenivType2" ? `126.26`: "342.26"}>
+            <Wrap ref={contentRef} top={frameType === "WenivType2" ? `206.83`: "563"}>
                 <Picture src={result}/>
                 <Frame src={process.env.PUBLIC_URL + `/images/${frameType}.svg`} alt=""/>
             </Wrap>
@@ -109,38 +108,36 @@ export default function PrintPage({ result }) {
 
 const Cont = styled.div`
     display: flex;
-    align-items: center;
-    width: 100vw;
+    width: 100svw;
     height: 100vh;
+    align-items: center;
+    justify-content: center;
     background-color: var(--bg-color);
-    padding: 0 calc(448 / 2048 * 100vh);
+    gap: calc(${window.innerWidth}/2732 * 300 * 0.35px);
 `
 
 const Wrap =  styled.div`
     display: flex;
     justify-content: center;
     position: relative; 
-    width: calc(1004.9 / 2732 * 100vw);
-    height: calc(1767.85 / 2048 * 100vh);
-    margin: 0 auto;
-    padding-top: ${(props) => `calc(${props.top} / 2048 * 100vh)`};
+    width: calc(${window.innerWidth}/2732 * 1653 * 0.35px);
+    height: calc(${window.innerWidth}/2732 * 2908 * 0.35px);
+    padding-top: ${(props) => `calc(${window.innerWidth}/2732 * ${props.top} * 0.35px)`};
     background-color: var(--gray-color);
 `
 
 const Frame = styled.img`
     position: absolute;
-    width: calc(1004.9 / 2732 * 100vw);
-    height: calc(1767.85 / 2048 * 100vh);
+    height: calc(${window.innerWidth}/2732 * 2908 * 0.35px);
     left: 0;
     top: 0;
 `
 
 const Picture = styled.img`
     position: absolute;
-    width: calc(879.48 / 2732 * 100vw);
-    height: calc(1299.64 / 2048 * 100vh);
+    width: calc(${window.innerWidth}/2732 * 1447 * 0.35px);
+    height: calc(${window.innerWidth}/2732 * 2138.17 * 0.35px);
     object-fit: cover;
-    background-color: pink;
 `;
 
 const QRWrap = styled.div`
@@ -149,31 +146,35 @@ const QRWrap = styled.div`
     align-items: center;
 
     p {
-        font-size: 4rem;
+        font-size: calc((${window.innerHeight}/2048) * 64px);
         color: var(--main-color);
         text-align: center;
         font-weight: 300;
-        line-height: calc(74.56 / 2732 * 100vw);
+        line-height: calc((${window.innerHeight}/2048) * 74.56px);
     }
 
     img {
-        width: calc(80 / 2732 * 100vw);
-        margin: calc(22 / 2732 * 100vw) 0 calc(46 / 2732 * 100vw) 0;
+        width: calc(${window.innerWidth}/2732 * 80 * 0.35px);
+        margin: calc(${window.innerWidth}/2732 * 11 * 0.35px) 0 calc(${window.innerWidth}/2732 * 46 * 0.35px);
     }
 
     div {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: calc(440 / 2732 * 100vw);
-        height: calc(440 / 2732 * 100vw);
+        /* width: calc(440 / 2732 * 100vw);
+        height: calc(440 / 2732 * 100vw); */
+        width: calc(${window.innerWidth}/2732 * 440 * 0.35px);
+        margin: calc(${window.innerWidth}/2732 * 400 * 0.35px);
         background-color: var(--main-color);
         border-radius: 28px;
     }
 `
 
 const StyledQRCode = styled(QRCode)`
-    width: calc(362 / 2732 * 100vw);
-    height: calc(362 / 2732 * 100vw);
+    /* width: calc(362 / 2732 * 100vw);
+    height: calc(362 / 2732 * 100vw); */
+    width: calc(${window.innerWidth}/2732 * 362 * 0.35px);
+    margin: calc(${window.innerWidth}/2732 * 362 * 0.35px);
     border-radius: 18px;
 `

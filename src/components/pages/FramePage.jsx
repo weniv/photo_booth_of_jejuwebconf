@@ -125,10 +125,10 @@ const Btn = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 14.0625vh;
+    height: calc(${window.innerHeight}/2048 * 288px);
     background-color: var(--main-color);
     bottom: 0;
-    font-size: 7.5rem;
+    font-size: calc((${window.innerHeight}/2048) * 120px);
     font-weight: 500;
     color: var(--white-color);
 `;

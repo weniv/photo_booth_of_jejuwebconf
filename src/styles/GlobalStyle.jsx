@@ -28,13 +28,13 @@ const GlobalStyles = createGlobalStyle`
         /* overflow: hidden; */
     }
 
-@media (min-width: 1581px) and (max-width: 1920px) {
+/* @media (min-width: 1601px) and (max-width: 1920px) {
 	html {
 		font-size: 12px;
 	}
 }
 
-@media (min-width: 1201px) and (max-width: 1580px) {
+@media (min-width: 1201px) and (max-width: 1600px) {
 	html {
 		font-size: 8px;
 	}
@@ -44,7 +44,7 @@ const GlobalStyles = createGlobalStyle`
 	html {
 		font-size: 6px;
 	}
-}
+} */
 `;
 
 export default GlobalStyles;

@@ -126,23 +126,29 @@ const Wrap = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 5.63689604685vw;
-        height: 5.63689604685vw;
-        font-size: 5rem;
+        width: calc((${window.innerHeight}/2048) * 154px);
+        height: calc((${window.innerHeight}/2048) * 154px);
+        font-size: calc((${window.innerHeight}/2048) * 80px);
         background-color: var(--white-color);
         color: var(--main-color);
         border-radius: 16px;
     }
 
     h2 {
-        font-size: 4rem;
+        font-size: calc((${window.innerHeight}/2048) * 64px);
         color: var(--main-color);
     }
 `;
 
+// width: 419.2808532714844px
+// height: 634.5662231445312px
+// top: 482.2618103027344px
+// left: 510.615234375px
+
+
 const Video = styled.video`
-    width: 31.91800878477vw;
-    height: 64.453125vh;
+    width: calc((${window.innerWidth}/2732 * 419)*1.2px);
+    height: calc((${window.innerWidth}/2732 * 634)*1.2px);
     object-fit: cover;
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg); /* Safari and Chrome */
@@ -151,17 +157,24 @@ const Video = styled.video`
 `;
 
 const PicWrap = styled.div`
-    width: 52.96486090776vw;
-    height: 104.40283203125vh;
+    /* width: 52.96486090776vw;
+    height: 104.40283203125vh; */
+    width: calc(879.48px);
+    height: calc(1299.64px);
+    /* width: 419px;
+    height: 634px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: space-between;
+    background-color: pink;
 `;
 
 const Picture = styled.img`
-    width: 25.24487554905vw;
-    height: 50.9677734375vh;
+    width: 419.28px;
+    height: 637.57px;
+    width: calc((${window.innerWidth}/2732 * 419)/2px);
+    height: calc((${window.innerWidth}/2732 * 634)/2px);
     object-fit: cover;
 `;
 
@@ -171,12 +184,12 @@ const Btn = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 14.0625vh;
+    height: calc(${window.innerHeight}/2048 * 288px);
     background-color: var(--main-color);
     bottom: 0;
 
     p {
-        font-size: 7.5rem;
+        font-size: calc((${window.innerHeight}/2048) * 120px);
         font-weight: 500;
         color: var(--white-color);
     }
