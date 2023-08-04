@@ -80,8 +80,8 @@ export default function PrintPage({ result }) {
         }
     };
 
-    console.log("qrValue", qrValue)
-    console.log("isQr", isQr)
+    // console.log("qrValue", qrValue)
+    // console.log("isQr", isQr)
 
 
     return (
@@ -94,7 +94,7 @@ export default function PrintPage({ result }) {
             <QRWrap>
                 <p>QR코드를 통해 <br/>사진을 다운로드 하세요</p>
                 <img src={downArrow} alt="" />
-                {isQr ? (
+                {isQr && qrValue ? (
                     <div>
                         <StyledQRCode value={qrValue} />
                     </div>
